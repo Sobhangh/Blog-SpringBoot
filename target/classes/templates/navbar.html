@@ -1,0 +1,16 @@
+<nav style="background-color:chartreuse">
+    <header>
+        <h1>Welcome to SoBlogg</h1>
+    </header>
+    <!-- Add your navigation links here (e.g., Home, About, Contact) -->
+    <a href="/">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <!--button th:onclick="geturl('/profile')">Profile</button-->
+    <div class="user-actions">
+        <a sec:authorize="isAuthenticated()" href="/profile">Profile</a>
+        <a sec:authorize="isAuthenticated()" href="/logout">Logout</a>
+        <a href="/signup">Sign Up</a>
+        <a sec:authorize="!isAuthenticated()" href="/login">Log In</a>
+    </div>
+</nav>

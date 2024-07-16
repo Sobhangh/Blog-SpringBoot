@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Login</title>
+    <script type="text/javascript" th:src = "@{/js/JWT.js}"></script>
+
+    <!-- Add your CSS stylesheets here -->
+</head>
+<nav>
+    <!-- Add your navigation links here (e.g., Home, About, Contact) -->
+    <a href="/">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+</nav>
+<body>
+<h1>Login</h1>
+<form action="/authenticate" th:object="${JwtRequest}" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" th:field="*{username}" required/>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" th:field="*{password}" required/>
+
+    <button type="submit">Log in</button>
+</form>
+<!-- Rest of your content -->
+<p th:if="${success==1}">Log in successful</p>
+</body>
+</html>

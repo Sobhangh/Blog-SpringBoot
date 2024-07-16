@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Welcome to SoBlogg</title>
+    <script type="text/javascript" th:src = "@{/js/header.js}"></script>
+    <!--script type="text/javascript" th:inline="javascript">
+        var success = /*[[ ${success} ]]*/ 0;
+        console.log(success);
+        if (success == 1){
+            var jwtToken = /*[[ ${jwtToken} ]]*/ null;
+            sessionStorage.setItem("jwtToken", jwtToken);
+            console.log("jwt token");
+            console.log(jwtToken);
+        }
+    </script>-->
+    <!-- Add your CSS stylesheets here -->
+    <style>
+        /* Content */
+        .post-info {
+            margin-bottom: 20px; /* Add spacing between posts */
+            background-color: white;
+            display: flex;
+            border-color:black;
+        }
+        .post-data{
+            flex:1;
+            text-align: center;
+        }
+        .posts{
+            margin-left: 20%;
+            width:60%;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+    </style>
+    <link rel="stylesheet" th:href="@{/css/general.css}">
+</head>
+<body>
+<header-component sec:authorize="!isAuthenticated()"></header-component>
+<header-component2 sec:authorize="isAuthenticated()"></header-component2>
+<main>
+<div class="posts">
+<div th:each="post : ${posts}" class="post-info">
+    <div class="post-data">
+        <p>Title</p>
+        <p th:text="${post.title}" ></p>
+    </div>
+    <div class="post-data">
+        <p>Author</p>
+        <p th:text="${post.user}"></p>
+    </div>
+    <div class="post-data">
+        <p>Creation date</p>
+        <p th:text="${post.createdate}"></p>
+    </div>
+    <div class="post-data">
+        <a th:href="'/post?title=' + ${post.title} + '&user=' + ${post.user}">View content</a>
+    </div>
+</div>
+</div>
+</main>
+<!-- Rest of your content -->
+<!-- Add your JavaScript scripts here if needed -->
+</body>
+
+</html>

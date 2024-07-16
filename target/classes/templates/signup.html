@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Sign Up</title>
+    <script type="text/javascript" th:src = "@{/js/header.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/general.css}">
+    <!-- Add your CSS stylesheets here -->
+</head>
+<header-component sec:authorize="!isAuthenticated()"></header-component>
+<header-component2 sec:authorize="isAuthenticated()"></header-component2>
+<body>
+<h1>Sign Up</h1>
+<form th:action="@{/register}" th:object="${UserDTO}" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" th:field="*{username}" required/>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" th:field="*{password}" required/>
+
+    <button type="submit">Sign Up</button>
+</form>
+<p th:if="${success==1}">Sign up successful</p>
+<p th:if="${success==-1}">Account exists !!!</p>
+<!-- Rest of your content -->
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <script type="text/javascript" th:src = "@{/js/header.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/general.css}">
+</head>
+<body>
+<header-component sec:authorize="!isAuthenticated()"></header-component>
+<header-component2 sec:authorize="isAuthenticated()"></header-component2>
+<!--div class="header">
+    <a href="/logout" <button class="logout-button" >Logout</button></a>
+    <a href="/profile">Profile</a>
+</div-->
+    <div style="margin:5%;">
+        <h2 th:text="${post.title}"></h2>
+        <div style="display: inline-block;">
+            <p>Created at: </p>
+            <p th:text="${post.createdate}"></p>
+        </div>
+        <br>
+        <div id="text" ></div>
+    </div>
+</body>
+<script type="text/javascript" th:inline="javascript">
+    let text = document.getElementById("text");
+    var p = [[ ${post} ]];
+    text.innerHTML = p.text;
+    console.log(p.text);
+</script>
+</html>

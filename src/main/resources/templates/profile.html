@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <script type="text/javascript" th:src = "@{/js/header.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/general.css}">
+    <style>
+        /* Content */
+        .post-info {
+            margin-bottom: 20px; /* Add spacing between posts */
+            background-color: white;
+            display: flex;
+            border-color:black;
+        }
+        .post-data{
+            flex:1;
+            text-align: center;
+        }
+        .posts{
+            margin-left: 20%;
+            width:60%;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+<header-component sec:authorize="!isAuthenticated()"></header-component>
+<header-component2 sec:authorize="isAuthenticated()"></header-component2>
+<div class="header" style="text-align: center;margin:3%;">
+    <!--a href="/logout" <button class="logout-button" >Logout</button></a-->
+    <button class="new-post-button" > <a href ="/newpost"> New Post </a> </button>
+</div>
+<div class="posts">
+    <!-- Loop through the list of written posts -->
+    <div th:each="post : ${posts}" class="post-info">
+        <div class="post-data">
+            <p>Title</p>
+            <p th:text="${post.title}" ></p>
+        </div>
+        <div class="post-data">
+            <p>Author</p>
+            <p th:text="${post.user}"></p>
+        </div>
+        <div class="post-data">
+            <p>Creation date</p>
+            <p th:text="${post.createdate}"></p>
+        </div>
+        <div class="post-data">
+            <a th:href="'/post?title=' + ${post.title} + '&user=' + ${post.user}">View content</a>
+            <a th:href="'/update?id=' + ${post.id}">Update content</a>
+            <a th:href="'/delete?id=' + ${post.id}">Delete content</a>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

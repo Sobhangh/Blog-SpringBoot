@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Private Post Error</title>
+    <script type="text/javascript" th:src = "@{/js/header.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/general.css}">
+</head>
+<body>
+<header-component sec:authorize="!isAuthenticated()"></header-component>
+<header-component2 sec:authorize="isAuthenticated()"></header-component2>
+<div>
+    <a href="/">Home</a>
+</div>
+<h1>This is a private post: Access denied</h1>
+</body>
+</html>
