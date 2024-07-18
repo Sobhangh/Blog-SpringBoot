@@ -16,6 +16,9 @@ import com.javainuse.dao.UserDao;
 import com.javainuse.model.DAOUser;
 import com.javainuse.model.UserDTO;
 
+/**
+ * Service class implementing UserDetailsService used in Spring to access the user details
+ */
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
 

@@ -60,7 +60,8 @@ public class JwtAuthenticationController implements WebMvcConfigurer {
 
 		//return ResponseEntity.ok(new JwtResponse(token));
 	}
-	
+
+	//Endpoint for registering a new user
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ModelAndView saveUser(@ModelAttribute UserDTO user) throws Exception {
 		logger.trace("registration...............");

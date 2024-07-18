@@ -6,6 +6,9 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+/**
+ * Declaring the posts table
+ */
 @Entity
 @Table(name = "posts")
 public class Post {

@@ -3,7 +3,9 @@ package com.javainuse.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-
+/**
+ * Declaring the user table
+ */
 @Entity
 @Table(name = "user")
 public class DAOUser {

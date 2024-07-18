@@ -34,38 +34,36 @@
 </div>
 </body>
 <script>
+    //function used to add the input image to the content area
     function pasteImage() {
     document.getElementById("output").focus();
     var reader = new FileReader();
   reader.onload = function(e) {
       document.getElementById("output").focus();
       document.execCommand('insertImage', false, e.target.result);
-      console.log("image loaded...");
-      console.log(e.target.result);
   }
   reader.readAsDataURL(document.getElementById("input").files[0]);
 }
-console.log(document);
 document.getElementById("input").addEventListener('input', pasteImage);
 document.getElementById("output").focus();
 </script>
 <script type="text/javascript" th:inline="javascript">
+    //For adding the content of the editable element to the textarea which is submitted by the form.
     let form = document.getElementById("form");
     form.addEventListener('submit', function(event) {
         event.preventDefault();
         var p = [[ ${post} ]];
         document.getElementById("content").innerHTML = document.getElementById("output").innerHTML;
-        console.log("text content...");
-        console.log(document.getElementById("output").innerHTML);
-        //console.log(p.title);
         form.submit();
     });
 </script>
 <script th:inline="javascript">
+    //Function used to set the content of the content editable element
     function myFunction(){
         var p = [[ ${post} ]];
         document.getElementById("output").innerHTML = p.text;
     }
+    //Function used to make the text editable
     function buttonclicked(){
         document.getElementById("output").setAttribute("contenteditable","true");
     }

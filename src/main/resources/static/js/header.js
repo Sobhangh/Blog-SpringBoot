@@ -1,4 +1,6 @@
+// The first header is used for not authenticated users
 const headerTemplate = document.createElement('template');
+//This is used in case the user is authenticated
 const headerTemplate2 = document.createElement('template');
 headerTemplate.innerHTML = `
   <style>

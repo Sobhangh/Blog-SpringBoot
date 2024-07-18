@@ -38,12 +38,9 @@
   reader.onload = function(e) {
       document.getElementById("output").focus();
       document.execCommand('insertImage', false, e.target.result);
-      console.log("image loaded...");
-      console.log(e.target.result);
   }
   reader.readAsDataURL(document.getElementById("input").files[0]);
 }
-console.log(document);
 document.getElementById("input").addEventListener('input', pasteImage);
 document.getElementById("output").focus();
 </script>
@@ -53,9 +50,6 @@ document.getElementById("output").focus();
         event.preventDefault();
         var p = [[ ${post} ]];
         document.getElementById("content").innerHTML = document.getElementById("output").innerHTML;
-        console.log("text content...");
-        console.log(document.getElementById("output").innerHTML);
-        //console.log(p.title);
         form.submit();
     });
 </script>
