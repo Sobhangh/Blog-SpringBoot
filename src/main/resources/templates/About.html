@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Private Post Error</title>
+    <script type="text/javascript" th:src = "@{/js/header.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/general.css}">
 </head>
 <body>
-$END$
+<header-component sec:authorize="!isAuthenticated()"></header-component>
+<header-component2 sec:authorize="isAuthenticated()"></header-component2>
+<h3>This is a blog webapp developed using SpringBoot as backed server, Hibernate and MySQL for database, Thymeleaf for fronted. One can make an account and login to write posts and save them. Later they can be viewed, updated or deleted. The posts can either be private or public.</h3>
 </body>
 </html>

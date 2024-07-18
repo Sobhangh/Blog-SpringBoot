@@ -41,8 +41,7 @@ headerTemplate.innerHTML = `
     <nav class="nav" style="background-color:chartreuse ">
         <!-- Add your navigation links here (e.g., Home, About, Contact) -->
         <div class="nav-child">
-            <a href="#">About</a>
-            <a href="#">Contact</a>
+            <a href="/about">About</a>
         </div>
         <header class="nav-child center">
             <a href="/"> <h1>Welcome to SoBlogg</h1></a>
@@ -97,8 +96,7 @@ headerTemplate2.innerHTML = `
     <nav class="nav" style="background-color:chartreuse ">
         <!-- Add your navigation links here (e.g., Home, About, Contact) -->
         <div class="nav-child">
-            <a href="#">About</a>
-            <a href="#">Contact</a>
+            <a href="/about">About</a>
         </div>
         <header class="nav-child center">
             <a href="/"> <h1>Welcome to SoBlogg</h1></a>

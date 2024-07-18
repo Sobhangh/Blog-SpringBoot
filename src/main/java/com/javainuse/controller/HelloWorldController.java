@@ -7,12 +7,14 @@ import com.javainuse.model.UserDTO;
 import com.javainuse.service.PostDetailService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -25,7 +27,7 @@ public class HelloWorldController implements WebMvcConfigurer {
 	@Autowired
 	PostDetailService postDetailService;
 
-	//Logger logger = LoggerFactory.getLogger(LoggingController.class);
+	//Logger logger = LoggerFactory.getLogger(HelloWorldController.class);
 
 	@RequestMapping({ "/" })
 	public ModelAndView firstPage() {
@@ -33,6 +35,11 @@ public class HelloWorldController implements WebMvcConfigurer {
 		mv.addObject("posts",postDetailService.findPublicPosts());
 		return mv;
 		//return "hello";
+	}
+	@RequestMapping({ "/about" })
+	public ModelAndView aboutPage() {
+		ModelAndView mv = new ModelAndView("About");
+		return mv;
 	}
 
 	/**@RequestMapping({ "/login" })
@@ -107,6 +114,8 @@ public class HelloWorldController implements WebMvcConfigurer {
 		}
 		else{
 			//TO DO: Return error...
+			throw new ResponseStatusException(
+					HttpStatus.NOT_FOUND, "The to post to be updated not found");
 
 		}
 		return ProfilePage();
@@ -117,10 +126,11 @@ public class HelloWorldController implements WebMvcConfigurer {
 		String user = SecurityContextHolder.getContext().getAuthentication().getName();
 		boolean p = postDetailService.delete(id);
 		if(p){
-			//TO DO: REturn confirmation
 		}
 		else{
 			//TO DO: Return error...
+			throw new ResponseStatusException(
+					HttpStatus.NOT_FOUND, "The to post to be deleted not found");
 
 		}
 		return ProfilePage();
